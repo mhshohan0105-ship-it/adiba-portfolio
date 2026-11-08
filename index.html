@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adiba Mahafuj | Portfolio</title>
+<meta name="description" content="Adiba Mahafuj, Administrative and Client Coordination Professional. Ranked 1st, Department of English, PUST.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060b16; --bg2:#0b1324; --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.09);
+  --text:#f5efe2; --muted:#9aa3b5; --gold:#d6ad5c; --gold2:#f6e2b0; --violet:#b88a3e; --rose:#ecd39a;
+  --grad:linear-gradient(120deg,#fff3d6,var(--gold2) 30%,var(--gold) 65%,#b8893a);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:#111}
+
+/* ---------- 3D background ---------- */
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 40%,transparent 40%,rgba(6,11,22,.75) 100%)}
+.grain{position:fixed;inset:-50%;z-index:2;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+main,nav,footer{position:relative;z-index:3}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .8s ease,visibility .8s}
+#loader.done{opacity:0;visibility:hidden}
+.mono{font-family:"Playfair Display",serif;font-size:72px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:pulse 1.4s ease-in-out infinite}
+.loadbar{width:180px;height:2px;background:var(--line);margin:18px auto 0;overflow:hidden;border-radius:2px}
+.loadbar i{display:block;height:100%;width:0;background:var(--grad);animation:load 1.6s ease forwards}
+@keyframes load{to{width:100%}}
+@keyframes pulse{50%{opacity:.6;transform:scale(.96)}}
+
+/* ---------- cursor & progress ---------- */
+.cursor{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:2;left:0;top:0;
+  background:radial-gradient(circle,rgba(214,173,92,.12),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:var(--grad);box-shadow:0 0 12px var(--gold)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 5vw;transition:.4s}
+nav.scrolled{background:rgba(6,11,22,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:12px 5vw;border-bottom:1px solid var(--line)}
+.logo{font-family:"Playfair Display",serif;font-weight:900;font-size:24px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+.links a{position:relative;transition:color .3s}
+.links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--gold);transition:width .3s}
+.links a:hover{color:var(--text)}.links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.02em;transition:transform .3s,box-shadow .3s,background .3s;cursor:pointer;border:0}
+.btn-gold{background:var(--grad);color:#15110a;box-shadow:0 10px 30px -10px rgba(214,173,92,.6)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(214,173,92,.8)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--gold);transform:translateY(-3px)}
+.navcta{padding:9px 18px}
+
+/* ---------- layout ---------- */
+section{min-height:100vh;padding:120px 5vw;display:flex;flex-direction:column;justify-content:center;max-width:1320px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+h2{font-family:"Playfair Display",serif;font-size:clamp(36px,5.5vw,72px);line-height:1.05;font-weight:700;margin-bottom:22px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:clamp(16px,1.4vw,19px);max-width:620px}
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ---------- hero ---------- */
+#home{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
+.hello{font-size:15px;color:var(--muted);margin-bottom:10px;letter-spacing:.05em}
+.name{font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(52px,8.5vw,128px);line-height:.92;letter-spacing:-.02em}
+.name > span{display:block}
+.name .l2,.name .l2 .char{padding-bottom:.16em}
+.name .l2,.name .l2 .char{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+.name .l2 .char{animation:charIn .9s cubic-bezier(.2,.8,.2,1) forwards,shine 6s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.char{display:inline-block;opacity:0;transform:translateY(80%) rotateX(-90deg);transform-origin:bottom;animation:charIn .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes charIn{to{opacity:1;transform:none}}
+.role{margin-top:24px;font-size:clamp(17px,1.8vw,22px);min-height:1.6em;color:var(--text)}
+.role b{color:var(--gold);font-weight:500}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--gold);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.rank-pill{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:8px 16px 8px 8px;border-radius:999px;border:1px solid rgba(214,173,92,.35);background:rgba(214,173,92,.07);font-size:14px}
+.rank-pill .one{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#1a1206;font-weight:800;font-family:"Playfair Display",serif}
+
+.portrait-wrap{perspective:1200px;display:grid;place-items:center}
+.portrait{position:relative;width:min(380px,78vw);aspect-ratio:1;transform-style:preserve-3d;transition:transform .2s ease-out}
+.ring{position:absolute;inset:-8%;border-radius:50%;border:1px solid rgba(214,173,92,.35);transform:translateZ(-40px)}
+.ring.r2{inset:-18%;border-color:rgba(214,173,92,.25);border-style:dashed;animation:spin 40s linear infinite}
+.ring.r1{animation:spin 25s linear infinite reverse}
+.ring.r1::before,.ring.r2::before{content:"";position:absolute;top:50%;left:-5px;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px var(--gold)}
+.ring.r2::before{background:var(--violet);box-shadow:0 0 18px var(--violet);left:auto;right:-5px;top:20%}
+@keyframes spin{to{transform:translateZ(-40px) rotate(360deg)}}
+.photo{position:absolute;inset:0;border-radius:50%;overflow:hidden;transform:translateZ(30px);
+  box-shadow:0 0 0 3px rgba(214,173,92,.6),0 0 0 10px rgba(214,173,92,.08),0 40px 90px -20px rgba(214,173,92,.45),0 0 120px rgba(214,173,92,.25)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transform:scale(1.05)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.18),transparent 40%,transparent 70%,rgba(214,173,92,.18))}
+.glow{position:absolute;inset:-25%;border-radius:50%;background:radial-gradient(circle,rgba(214,173,92,.28),transparent 60%);filter:blur(30px);transform:translateZ(-80px);animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.5;transform:translateZ(-80px) scale(1.1)}}
+.float-badge{position:absolute;transform:translateZ(80px);background:rgba(10,18,34,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);
+  padding:10px 14px;border-radius:14px;font-size:13px;white-space:nowrap;box-shadow:0 20px 40px -15px rgba(0,0,0,.7);animation:bob 5s ease-in-out infinite}
+.float-badge strong{display:block;font-size:18px;font-family:"Playfair Display",serif;color:var(--gold)}
+.fb1{top:2%;left:-14%}.fb2{bottom:8%;right:-16%;animation-delay:-2s}.fb3{bottom:-6%;left:2%;animation-delay:-3.5s}
+@keyframes bob{50%{translate:0 -12px}}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-hint i{width:1px;height:50px;background:linear-gradient(var(--gold),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- rank ---------- */
+#rank{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.big-first{font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(90px,15vw,220px);line-height:.85;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 40px rgba(214,173,92,.35))}
+.big-first sup{font-size:.4em;vertical-align:top;position:relative;top:.25em}
+.rank-title{font-family:"Playfair Display",serif;font-size:clamp(26px,3vw,40px);margin:10px 0 16px;line-height:1.15}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
+.stat{padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 0,rgba(214,173,92,.14),transparent 60%);opacity:0;transition:.4s}
+.stat:hover::before{opacity:1}
+.stat .n{font-family:"Playfair Display",serif;font-size:40px;font-weight:700;color:var(--gold);line-height:1}
+.stat .t{font-size:13px;color:var(--muted);margin-top:8px}
+.medal-stage{position:relative;height:460px;display:grid;place-items:end center;perspective:900px}
+.medal-stage .coin{display:none}
+@media (max-width:960px){.medal-stage .coin{display:block}}
+.coin{width:150px;height:150px;position:relative;transform-style:preserve-3d;animation:coin 6s linear infinite;margin-bottom:10px}
+.coin .face{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;backface-visibility:hidden;
+  background:radial-gradient(circle at 30% 30%,#fff3c9,#e8c27a 40%,#9b7633 85%);box-shadow:inset 0 0 0 6px rgba(255,255,255,.25),inset 0 0 0 12px rgba(120,85,25,.35),0 0 60px rgba(214,173,92,.5);
+  color:#4a3510;font-family:"Playfair Display",serif;font-weight:900;text-align:center;line-height:1}
+.coin .face b{font-size:54px;display:block}.coin .face small{font-size:10px;letter-spacing:.2em;font-family:Inter;font-weight:700}
+.coin .back{transform:rotateY(180deg)}
+.coin .edge{position:absolute;inset:0;border-radius:50%;background:#a67f3a;transform:translateZ(-4px)}
+@keyframes coin{to{transform:rotateY(360deg)}}
+.ribbon{position:absolute;bottom:0;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- adapt ---------- */
+#adapt{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.adapt-left{min-height:300px}
+.morph-word{display:inline-block;color:var(--gold);font-style:italic;transition:opacity .4s,transform .4s,filter .4s}
+.morph-word.out{opacity:0;transform:translateY(-20px);filter:blur(8px)}
+.env-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.env{padding:24px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid var(--line);
+  transform-style:preserve-3d;transition:transform .25s ease-out,border-color .3s,box-shadow .3s;position:relative}
+.env:hover{border-color:rgba(214,173,92,.4);box-shadow:0 30px 60px -30px rgba(214,173,92,.35)}
+.env .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(214,173,92,.1);border:1px solid rgba(214,173,92,.25);margin-bottom:14px;transform:translateZ(30px)}
+.env .ic svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.env h3{font-size:17px;margin-bottom:6px;transform:translateZ(20px)}
+.env p{font-size:13.5px;color:var(--muted);transform:translateZ(10px)}
+
+/* ---------- experience ---------- */
+.timeline{position:relative;margin-top:50px;padding-left:40px}
+.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--gold),var(--violet),transparent)}
+.job{position:relative;margin-bottom:34px;padding:30px;border-radius:22px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transform-style:preserve-3d;transition:transform .25s ease-out,border-color .3s}
+.job:hover{border-color:rgba(214,173,92,.35)}
+.job::before{content:"";position:absolute;left:-39px;top:36px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--gold);box-shadow:0 0 16px var(--gold)}
+.job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline}
+.job h3{font-family:"Playfair Display",serif;font-size:clamp(22px,2.4vw,30px)}
+.job .co{color:var(--gold);font-weight:600;font-size:15px}
+.date{font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.job ul{margin-top:16px;list-style:none;display:grid;gap:9px}
+.job li{position:relative;padding-left:22px;color:#d4d9e3;font-size:15px}
+.job li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:1px;background:var(--gold)}
+
+/* ---------- skills ---------- */
+#skills{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sphere{position:relative;width:min(520px,90vw);aspect-ratio:1;margin:auto;cursor:grab}
+.sphere span{position:absolute;left:50%;top:50%;white-space:nowrap;font-weight:600;font-size:15px;padding:7px 14px;border-radius:999px;
+  border:1px solid rgba(214,173,92,.3);background:rgba(10,18,34,.6);color:var(--text);will-change:transform,opacity;user-select:none}
+.sphere span.hot{color:#1a1206;background:var(--grad);border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{font-size:13px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);transition:.3s}
+.chip:hover{border-color:var(--gold);color:var(--text);transform:translateY(-2px)}
+
+/* ---------- education ---------- */
+.edu-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:20px;margin-top:50px}
+.edu{padding:30px;border-radius:24px;background:var(--card);border:1px solid var(--line);position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .25s ease-out}
+.edu.star{border:1px solid transparent;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,var(--grad) border-box}
+.edu.star::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent 0 80%,rgba(214,173,92,.18) 90%,transparent);animation:sweep 6s linear infinite;pointer-events:none}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.edu .yr{font-size:13px;color:var(--muted)}
+.edu h3{font-family:"Playfair Display",serif;font-size:24px;margin:8px 0 6px;line-height:1.2}
+.edu .sch{color:#d4d9e3;font-size:14.5px}
+.edu .gpa{margin-top:22px;display:flex;align-items:baseline;gap:6px}
+.edu .gpa b{font-family:"Playfair Display",serif;font-size:42px;color:var(--gold)}
+.edu .gpa span{color:var(--muted);font-size:14px}
+.crown{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:7px 14px;border-radius:999px;background:var(--grad);color:#1a1206;font-weight:700;font-size:13px;position:relative;z-index:1}
+.bar{height:4px;border-radius:4px;background:var(--line);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--grad);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.in .bar i{width:var(--w)}
+
+/* ---------- activities ---------- */
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
+.act{padding:28px;border-radius:22px;background:var(--card);border:1px solid var(--line);transition:transform .4s,border-color .4s}
+.act:hover{transform:translateY(-8px);border-color:rgba(214,173,92,.35)}
+.act .k{font-family:"Playfair Display",serif;font-size:56px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold)}
+.act h3{margin:14px 0 6px;font-size:18px}.act p{color:var(--muted);font-size:14px}
+.langs{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lang{padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--card)}
+.lang .top{display:flex;justify-content:space-between;font-weight:600}.lang .top span{color:var(--gold);font-weight:500;font-size:14px}
+.refs{margin-top:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.ref{padding:22px;border-radius:18px;border:1px dashed var(--line)}
+.ref b{display:block}.ref span{color:var(--muted);font-size:14px}
+
+/* ---------- contact ---------- */
+#contact{text-align:center;align-items:center}
+#contact h2{font-size:clamp(44px,8vw,110px)}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:46px 0 40px;width:100%;max-width:900px}
+.cc{padding:22px;border-radius:18px;background:var(--card);border:1px solid var(--line);transition:.3s;text-align:left}
+.cc:hover{border-color:var(--gold);transform:translateY(-4px)}
+.cc small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.cc div{font-size:15px;word-break:break-word}
+footer{text-align:center;padding:40px 5vw;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .links{display:none}
+  #home,#rank,#adapt,#skills{grid-template-columns:1fr}
+  #home{padding-top:110px;text-align:left}
+  .portrait-wrap{order:-1;margin-bottom:20px}
+  .portrait{width:min(300px,70vw)}
+  .fb1{left:-6%}.fb2{right:-8%}
+  .medal-stage{height:300px}
+  .edu-grid,.act-grid,.langs,.contact-cards{grid-template-columns:1fr}
+  .refs{grid-template-columns:1fr}
+  .scroll-hint{display:none}
+  section{min-height:auto;padding:90px 16px}
+  nav{padding:16px}
+  nav.scrolled{padding:10px 16px}
+  .cursor{display:none}
+}
+@media (max-width:520px){
+  .env-grid,.stats{grid-template-columns:1fr}
+  .float-badge{font-size:11px;padding:8px 10px}.float-badge strong{font-size:15px}
+  .fb1{left:-10%;top:-2%}.fb2{right:-10%}
+  .timeline{padding-left:28px}.job::before{left:-27px}.job{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div style="text-align:center"><div class="mono">AM</div><div class="loadbar"><i></i></div></div></div>
+<canvas id="bg"></canvas>
+<div class="vignette"></div>
+<div class="grain"></div>
+<div class="cursor" id="cursor"></div>
+<div id="progress"></div>
+
+<nav id="nav">
+  <a href="#home" class="logo">Adiba.</a>
+  <div class="links">
+    <a href="#rank">Achievement</a><a href="#adapt">Adaptability</a><a href="#experience">Experience</a>
+    <a href="#skills">Skills</a><a href="#education">Education</a><a href="#beyond">Beyond</a>
+  </div>
+  <a href="#contact" class="btn btn-gold navcta">Let's talk</a>
+</nav>
+
+<main>
+<!-- HERO -->
+<section id="home" data-shape="sphere" style="position:relative">
+  <div>
+    <p class="hello reveal">Hello, I'm</p>
+    <h1 class="name" aria-label="Adiba Mahafuj"><span class="l1" data-split>Adiba</span><span class="l2" data-split>Mahafuj</span></h1>
+    <p class="role reveal d2"><span id="typed"></span><span class="caret"></span></p>
+    <p class="lead reveal d3" style="margin-top:18px">A detail oriented English graduate who keeps people, priorities and paperwork moving: calmly, confidentially and on time.</p>
+    <div class="rank-pill reveal d3"><span class="one">1</span><span><b>Ranked 1st</b> · Department of English, PUST</span></div>
+    <div class="hero-cta reveal d4">
+      <a href="#contact" class="btn btn-gold">Get in touch</a>
+      <a href="assets/Adiba_Mahafuj_CV.pdf" download class="btn btn-ghost">Download CV</a>
+    </div>
+  </div>
+  <div class="portrait-wrap reveal d2">
+    <div class="portrait" id="portrait">
+      <div class="glow"></div>
+      <div class="ring r2"></div>
+      <div class="ring r1"></div>
+      <div class="photo"><img src="assets/adiba.jpg" alt="Portrait of Adiba Mahafuj"></div>
+      <div class="float-badge fb1"><strong>#1</strong>in Department</div>
+      <div class="float-badge fb2"><strong>~2 yrs</strong>Client management</div>
+      <div class="float-badge fb3"><strong>3</strong>Languages</div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll<i></i></div>
+</section>
+
+<!-- RANK -->
+<section id="rank" data-shape="first">
+  <div>
+    <span class="eyebrow reveal">The Highlight</span>
+    <div class="big-first reveal d1">1<sup>st</sup></div>
+    <h2 class="rank-title reveal d2">Top of the class in the <span class="grad">Department of English</span>, Pabna University of Science &amp; Technology</h2>
+    <p class="lead reveal d3">Out of an entire department of talented peers, Adiba finished <b style="color:var(--text)">first</b>. It's proof of the discipline, consistency and attention to detail she brings to every desk she sits at.</p>
+    <div class="stats">
+      <div class="stat reveal d1"><div class="n" data-count="1" data-suffix="st">0</div><div class="t">Rank in Department</div></div>
+      <div class="stat reveal d2"><div class="n" data-count="3.59" data-dec="2">0</div><div class="t">CGPA out of 4.00 · B.A. (Hons) English</div></div>
+      <div class="stat reveal d3"><div class="n" data-count="3">0</div><div class="t">Languages: English, Bengali, Hindi</div></div>
+      <div class="stat reveal d4"><div class="n" data-count="2" data-prefix="~" data-suffix=" yrs">0</div><div class="t">Client facing experience</div></div>
+    </div>
+  </div>
+  <div class="medal-stage reveal d2">
+    <div class="coin">
+      <div class="edge"></div>
+      <div class="face"><div><b>1<span style="font-size:.45em">st</span></b><small>ENGLISH · PUST</small></div></div>
+      <div class="face back"><div><b style="font-size:40px">AM</b><small>CLASS OF 2025</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADAPT -->
+<section id="adapt" data-shape="morph">
+  <div class="adapt-left"></div>
+  <div>
+    <span class="eyebrow reveal">Adaptability</span>
+    <h2 class="reveal d1">At home in<br><span class="morph-word" id="morph">any environment</span></h2>
+    <p class="lead reveal d2" style="margin-bottom:34px">Front desk or remote inbox, corporate meeting room or university stage, Adiba reads the room, learns the rhythm, and fits right in. Like the shape behind this text, she adapts without losing form.</p>
+    <div class="env-grid">
+      <div class="env tilt reveal d1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h3>Corporate front line</h3><p>First point of contact for clients by phone, email and in person at MindShaper.</p></div>
+      <div class="env tilt reveal d2"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Fully remote</h3><p>Delivered customer service remotely for Mount Blue Clothing across phone and online channels.</p></div>
+      <div class="env tilt reveal d3"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.6 10.7l6.8-3.4M8.6 13.3l6.8 3.4"/></svg></div><h3>Cross team bridges</h3><p>Coordinated sales and logistics teams to make sure orders landed on time.</p></div>
+      <div class="env tilt reveal d4"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M7 10.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-5.5"/></svg></div><h3>Campus &amp; culture</h3><p>Organised cultural and literary events; active in the English Literature Club.</p></div>
+      <div class="env tilt reveal d1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><h3>On stage</h3><p>Competed in English debate and public speaking, confident in front of any audience.</p></div>
+      <div class="env tilt reveal d2"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></div><h3>Multilingual</h3><p>Fluent English, native Bengali, basic Hindi, comfortable with diverse people.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" data-shape="wave">
+  <span class="eyebrow reveal">Experience</span>
+  <h2 class="reveal d1">Where I've <span class="grad">made things run</span></h2>
+  <div class="timeline">
+    <article class="job tilt reveal">
+      <div class="job-head"><div><h3>Client Management Executive</h3><div class="co">MindShaper</div></div><span class="date">Aug 2025 to Jun 2026</span></div>
+      <ul>
+        <li>Served as the first point of contact for clients by phone, email and in person, responding to routine enquiries.</li>
+        <li>Maintained CRM records of every client interaction, request, responsible person and current status.</li>
+        <li>Tracked pending and time sensitive requests, routed them to the right team and followed up until resolution.</li>
+        <li>Scheduled client meetings and prepared the required documents and information in advance.</li>
+        <li>Handled client information with confidentiality and professional discretion.</li>
+      </ul>
+    </article>
+    <article class="job tilt reveal">
+      <div class="job-head"><div><h3>Customer Service Representative</h3><div class="co">Mount Blue Clothing · Remote</div></div><span class="date">Oct 2024 to Jul 2025</span></div>
+      <ul>
+        <li>Handled customer enquiries through phone and online channels, escalating urgent matters promptly.</li>
+        <li>Maintained accurate, organised records of orders, returns and exchanges for quick retrieval.</li>
+        <li>Coordinated with sales and logistics teams to ensure timely fulfilment and delivery.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" data-shape="knot">
+  <div>
+    <span class="eyebrow reveal">Core Skills</span>
+    <h2 class="reveal d1">The toolkit behind <span class="grad">smooth operations</span></h2>
+    <p class="lead reveal d2">Drag the sphere. Every skill here has been used daily with real clients, real deadlines and real confidentiality.</p>
+    <div class="chips reveal d3" id="chips"></div>
+  </div>
+  <div class="sphere reveal d2" id="sphere" aria-hidden="true"></div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" data-shape="cube">
+  <span class="eyebrow reveal">Education</span>
+  <h2 class="reveal d1">A record of <span class="grad">consistent excellence</span></h2>
+  <div class="edu-grid">
+    <div class="edu star tilt reveal d1">
+      <div class="yr">2025</div>
+      <h3>B.A. (Honours) in English</h3>
+      <div class="sch">Pabna University of Science and Technology (PUST)</div>
+      <div class="gpa"><b>3.59</b><span>/ 4.00 CGPA</span></div>
+      <div class="bar"><i style="--w:89.75%"></i></div>
+      <div class="crown">★ Ranked 1st in Department</div>
+    </div>
+    <div class="edu tilt reveal d2">
+      <div class="yr">2017</div>
+      <h3>HSC (Science)</h3>
+      <div class="sch">Kushtia Govt. Girls College · Jashore Board</div>
+      <div class="gpa"><b>4.00</b><span>/ 5.00 GPA</span></div>
+      <div class="bar"><i style="--w:80%"></i></div>
+    </div>
+    <div class="edu tilt reveal d3">
+      <div class="yr">2015</div>
+      <h3>SSC (Science)</h3>
+      <div class="sch">Kumarkhali Pilot Girls High School · Jashore Board</div>
+      <div class="gpa"><b>4.50</b><span>/ 5.00 GPA</span></div>
+      <div class="bar"><i style="--w:90%"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND -->
+<section id="beyond" data-shape="galaxy">
+  <span class="eyebrow reveal">Beyond the desk</span>
+  <h2 class="reveal d1">Achievements &amp; <span class="grad">activities</span></h2>
+  <div class="act-grid">
+    <div class="act reveal d1"><div class="k">01</div><h3>Department Topper</h3><p>Ranked 1st in the Department of English, Pabna University of Science and Technology.</p></div>
+    <div class="act reveal d2"><div class="k">02</div><h3>Event Organiser</h3><p>Volunteered in organising university cultural and literary events; active member of the English Literature Club.</p></div>
+    <div class="act reveal d3"><div class="k">03</div><h3>Debater &amp; Speaker</h3><p>Participated in English debate and public speaking competitions.</p></div>
+  </div>
+  <div class="langs">
+    <div class="lang reveal d1"><div class="top">English<span>Fluent</span></div><div class="bar"><i style="--w:92%"></i></div></div>
+    <div class="lang reveal d2"><div class="top">Bengali<span>Native</span></div><div class="bar"><i style="--w:100%"></i></div></div>
+    <div class="lang reveal d3"><div class="top">Hindi<span>Basic</span></div><div class="bar"><i style="--w:35%"></i></div></div>
+  </div>
+  <div class="refs">
+    <div class="ref reveal d1"><b>Md. Mahamudul Hasan</b><span>Assistant Professor, Dept. of English, PUST</span></div>
+    <div class="ref reveal d2"><b>Sinthia Karim Shimu</b><span>ACSM, City Bank PLC, Pallabi Branch</span></div>
+  </div>
+  <p class="reveal" style="color:var(--muted);font-size:13px;margin-top:12px">References: contact details available on request.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-shape="helix">
+  <span class="eyebrow reveal">Contact</span>
+  <h2 class="reveal d1">Let's work <span class="grad">together.</span></h2>
+  <p class="lead reveal d2">Looking for someone who keeps the office calm, clients happy and records spotless? I'd love to hear from you.</p>
+  <div class="contact-cards">
+    <a class="cc reveal d1" href="mailto:adibamahafuj1@gmail.com"><small>Email</small><div>adibamahafuj1@gmail.com</div></a>
+    <a class="cc reveal d2" href="tel:+8801516307706"><small>Phone</small><div>+880 1516 307706</div></a>
+    <div class="cc reveal d3"><small>Location</small><div>Mohammadpur, Dhaka, Bangladesh</div></div>
+  </div>
+  <div class="hero-cta reveal d4" style="justify-content:center">
+    <a href="mailto:adibamahafuj1@gmail.com" class="btn btn-gold">Send an email</a>
+    <a href="assets/Adiba_Mahafuj_CV.pdf" download class="btn btn-ghost">Download CV</a>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Adiba Mahafuj · Administrative &amp; Client Coordination Professional</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- loader ---------- */
+window.addEventListener('load',()=>setTimeout(()=>{document.getElementById('loader').classList.add('done');startHero();},1300));
+setTimeout(()=>{const l=document.getElementById('loader'); if(!l.classList.contains('done')){l.classList.add('done');startHero();}},4000);
+
+/* ---------- split name ---------- */
+let heroStarted=false;
+function startHero(){
+  if(heroStarted) return; heroStarted=true;
+  let d=0;
+  document.querySelectorAll('[data-split]').forEach(el=>{
+    const t=el.textContent; el.textContent='';
+    [...t].forEach(c=>{const s=document.createElement('span');s.className='char';s.textContent=c;s.style.animationDelay=(d+=0.06)+'s';el.appendChild(s);});
+  });
+  type();
+}
+
+/* ---------- typewriter ---------- */
+const roles=['Administrative &amp; <b>Client Coordination</b> Professional','English Graduate, <b>Ranked 1st</b> in Department','<b>CRM</b> & Record-Keeping Specialist','Calm, <b>adaptable</b> and people focused'];
+const typed=document.getElementById('typed');
+let ri=0;
+function type(){
+  const tmp=document.createElement('div');tmp.innerHTML=roles[ri];const plain=tmp.textContent;
+  let i=0;
+  const step=()=>{ i++; typed.innerHTML=htmlUpTo(roles[ri],i); if(i<plain.length) setTimeout(step,45); else setTimeout(erase,2200); };
+  const erase=()=>{ i--; typed.innerHTML=htmlUpTo(roles[ri],i); if(i>0) setTimeout(erase,22); else {ri=(ri+1)%roles.length; setTimeout(type,300);} };
+  step();
+}
+function htmlUpTo(html,n){ // keeps <b> tags while truncating visible chars
+  let out='',count=0,i=0;
+  while(i<html.length && count<n){
+    if(html[i]==='<'){const j=html.indexOf('>',i);out+=html.slice(i,j+1);i=j+1;continue;}
+    if(html[i]==='&'&&/^&[a-z]+;/.test(html.slice(i))){const j=html.indexOf(';',i);out+=html.slice(i,j+1);i=j+1;count++;continue;}
+    out+=html[i++];count++;
+  }
+  const opens=(out.match(/<b>/g)||[]).length,closes=(out.match(/<\/b>/g)||[]).length;
+  return out+(opens>closes?'</b>':'');
+}
+
+/* ---------- reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- counters ---------- */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return; cio.unobserve(e.target);
+  const el=e.target,to=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const t0=performance.now(),dur=1800;
+  (function f(t){const p=Math.min(1,(t-t0)/dur),v=to*(1-Math.pow(1-p,4));el.textContent=pre+v.toFixed(dec)+suf;if(p<1)requestAnimationFrame(f);})(t0);
+}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ---------- nav / progress / cursor ---------- */
+const nav=document.getElementById('nav'),prog=document.getElementById('progress'),cur=document.getElementById('cursor');
+addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>40);
+  prog.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
+},{passive:true});
+let mx=innerWidth/2,my=innerHeight/2;
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';},{passive:true});
+
+/* ---------- portrait 3D tilt ---------- */
+const portrait=document.getElementById('portrait');
+addEventListener('pointermove',e=>{
+  if(reduce) return;
+  const r=portrait.getBoundingClientRect(); if(r.bottom<0) return;
+  const dx=(e.clientX-(r.left+r.width/2))/innerWidth, dy=(e.clientY-(r.top+r.height/2))/innerHeight;
+  portrait.style.transform=`rotateY(${dx*30}deg) rotateX(${-dy*30}deg)`;
+},{passive:true});
+
+/* ---------- card tilt ---------- */
+document.querySelectorAll('.tilt').forEach(el=>{
+  el.addEventListener('pointermove',e=>{
+    if(reduce||e.pointerType==='touch') return;
+    const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    el.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-4px)`;
+  });
+  el.addEventListener('pointerleave',()=>{el.style.transform='';});
+});
+
+/* ---------- morph word ---------- */
+const words=['any environment','a busy front desk','a remote team','a corporate office','a campus stage','cross team projects'];
+const mw=document.getElementById('morph');let wi=0;
+setInterval(()=>{mw.classList.add('out');setTimeout(()=>{wi=(wi+1)%words.length;mw.textContent=words[wi];mw.classList.remove('out');},420);},2400);
+
+/* ---------- skill sphere ---------- */
+const skills=['Correspondence Management','Record Keeping','CRM','Client Management','Reception','Telephone Handling','Confidentiality','Cross Team Coordination','Meeting Support','Scheduling','Follow Up','Request Tracking','MS Office','Google Workspace','Public Speaking','English Writing','Discretion','Teamwork','Problem Solving','Time Management'];
+const hot=new Set(['CRM','Client Management','Confidentiality','Cross Team Coordination','MS Office']);
+const sphere=document.getElementById('sphere'),chips=document.getElementById('chips');
+['Correspondence Management','Record Keeping & Registers','CRM & Client Management','Reception & Telephone Handling','Confidential Information Handling','Cross Team Coordination','Meeting Support & Scheduling','Follow Up & Request Tracking','MS Office & Google Workspace']
+  .forEach(s=>{const c=document.createElement('span');c.className='chip';c.textContent=s;chips.appendChild(c);});
+const tags=skills.map((s,i)=>{
+  const el=document.createElement('span');el.textContent=s;if(hot.has(s))el.classList.add('hot');sphere.appendChild(el);
+  const phi=Math.acos(-1+(2*i+1)/skills.length),th=Math.sqrt(skills.length*Math.PI)*phi;
+  return {el,x:Math.cos(th)*Math.sin(phi),y:Math.sin(th)*Math.sin(phi),z:Math.cos(phi)};
+});
+let ax=0.003,ay=0.004,drag=false,lx=0,ly=0;
+sphere.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;sphere.setPointerCapture(e.pointerId);});
+sphere.addEventListener('pointermove',e=>{if(!drag)return;ay=(e.clientX-lx)*0.0015;ax=-(e.clientY-ly)*0.0015;lx=e.clientX;ly=e.clientY;});
+sphere.addEventListener('pointerup',()=>drag=false);
+function spinSphere(){
+  const R=sphere.clientWidth*0.38;
+  if(!drag){ax+=(0.003-ax)*0.02;ay+=(0.004-ay)*0.02;}
+  const cx=Math.cos(ax),sx=Math.sin(ax),cy=Math.cos(ay),sy=Math.sin(ay);
+  tags.forEach(t=>{
+    let y=t.y*cx-t.z*sx,z=t.y*sx+t.z*cx; t.y=y;t.z=z;
+    let x=t.x*cy+t.z*sy; z=-t.x*sy+t.z*cy; t.x=x;t.z=z;
+    const s=(t.z+2)/3;
+    t.el.style.transform=`translate(-50%,-50%) translate3d(${t.x*R}px,${t.y*R}px,0) scale(${s})`;
+    t.el.style.opacity=.25+.75*((t.z+1)/2);t.el.style.zIndex=Math.round(t.z*100)+100;
+  });
+  requestAnimationFrame(spinSphere);
+}
+spinSphere();
+
+/* =========================================================
+   THREE.JS — morphing particle universe
+   ========================================================= */
+if(typeof THREE==='undefined') return;
+const canvas=document.getElementById('bg');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(55,1,0.1,100);camera.position.z=7.5;
+const isMobile=()=>innerWidth<960;
+const N=isMobile()?3500:6500;
+
+// shape generators -------------------------------------------------
+const rnd=(a=1)=>(Math.random()*2-1)*a;
+function sphereShape(){const a=new Float32Array(N*3);for(let i=0;i<N;i++){const phi=Math.acos(-1+(2*i+1)/N),th=Math.sqrt(N*Math.PI)*phi,r=2.3+rnd(.06);
+  a[i*3]=r*Math.cos(th)*Math.sin(phi);a[i*3+1]=r*Math.sin(th)*Math.sin(phi);a[i*3+2]=r*Math.cos(phi);}return a;}
+function textShape(str){
+  const c=document.createElement('canvas'),W=600,H=300;c.width=W;c.height=H;const g=c.getContext('2d');
+  g.fillStyle='#fff';g.font='900 250px "Playfair Display", Georgia, serif';g.textAlign='center';g.textBaseline='middle';g.fillText(str,W/2,H/2+10);
+  const d=g.getImageData(0,0,W,H).data,pts=[];
+  for(let y=0;y<H;y+=2)for(let x=0;x<W;x+=2)if(d[(y*W+x)*4+3]>128)pts.push([x,y]);
+  const a=new Float32Array(N*3);
+  for(let i=0;i<N;i++){const p=pts[Math.floor(Math.random()*pts.length)]||[W/2,H/2];
+    a[i*3]=(p[0]-W/2)/W*5.2+rnd(.02);a[i*3+1]=-(p[1]-H/2)/W*5.2+rnd(.02);a[i*3+2]=rnd(.25);}
+  return a;}
+function knotShape(){const a=new Float32Array(N*3);for(let i=0;i<N;i++){const t=i/N*Math.PI*2,p=2,q=3,r=1.1*(2+Math.cos(q*t));
+  a[i*3]=r*Math.cos(p*t)*.75+rnd(.12);a[i*3+1]=r*Math.sin(p*t)*.75+rnd(.12);a[i*3+2]=-Math.sin(q*t)*1.2+rnd(.12);}return a;}
+function cubeShape(){const a=new Float32Array(N*3),s=1.7;for(let i=0;i<N;i++){const f=i%6,u=rnd(s),v=rnd(s),w=f%2?s:-s;
+  const ax=Math.floor(f/2);const p=ax===0?[w,u,v]:ax===1?[u,w,v]:[u,v,w];a[i*3]=p[0];a[i*3+1]=p[1];a[i*3+2]=p[2];}return a;}
+function torusShape(){const a=new Float32Array(N*3);for(let i=0;i<N;i++){const u=Math.random()*Math.PI*2,v=Math.random()*Math.PI*2,R=2,r=.7;
+  a[i*3]=(R+r*Math.cos(v))*Math.cos(u);a[i*3+1]=(R+r*Math.cos(v))*Math.sin(u);a[i*3+2]=r*Math.sin(v);}return a;}
+function waveShape(){const a=new Float32Array(N*3),side=Math.ceil(Math.sqrt(N));for(let i=0;i<N;i++){const gx=(i%side)/side-.5,gz=Math.floor(i/side)/side-.5;
+  a[i*3]=gx*14;a[i*3+2]=gz*10-1;a[i*3+1]=-2.2;}return a;}
+function galaxyShape(){const a=new Float32Array(N*3);for(let i=0;i<N;i++){const arm=i%3,r=Math.pow(Math.random(),.7)*3.6,ang=arm/3*Math.PI*2+r*1.4;
+  a[i*3]=Math.cos(ang)*r+rnd(.25*(1-r/4));a[i*3+1]=rnd(.15);a[i*3+2]=Math.sin(ang)*r+rnd(.25*(1-r/4));}return a;}
+function helixShape(){const a=new Float32Array(N*3);for(let i=0;i<N;i++){const t=(i/N)*Math.PI*10,s=i%2?Math.PI:0,y=(i/N)*9-4.5;
+  a[i*3]=Math.cos(t+s)*1.3+rnd(.08);a[i*3+1]=y;a[i*3+2]=Math.sin(t+s)*1.3+rnd(.08);}return a;}
+
+let shapes={};
+function buildShapes(){shapes={sphere:sphereShape(),first:textShape('1st'),knot:knotShape(),cube:cubeShape(),torus:torusShape(),wave:waveShape(),galaxy:galaxyShape(),helix:helixShape()};}
+buildShapes();
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{shapes.first=textShape('1st');if(current==='first')setTarget('first');});
+
+// geometry ---------------------------------------------------------
+const geo=new THREE.BufferGeometry();
+const pos=new Float32Array(N*3);for(let i=0;i<N*3;i++)pos[i]=rnd(12);
+const col=new Float32Array(N*3),speed=new Float32Array(N);
+const cA=new THREE.Color('#fff3d6'),cB=new THREE.Color('#f0d28e'),cC=new THREE.Color('#d6ad5c'),cD=new THREE.Color('#9fb3d9'),tmp=new THREE.Color();
+for(let i=0;i<N;i++){const t=Math.random();
+  if(t<.45)tmp.copy(cA).lerp(cB,Math.random());else if(t<.75)tmp.copy(cB).lerp(cC,Math.random());else tmp.copy(cC).lerp(cD,Math.random());
+  col[i*3]=tmp.r;col[i*3+1]=tmp.g;col[i*3+2]=tmp.b;speed[i]=.025+Math.random()*.05;}
+geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+const sprite=(()=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');const gr=g.createRadialGradient(32,32,0,32,32,32);
+  gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.25,'rgba(255,255,255,.8)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,64,64);
+  return new THREE.CanvasTexture(c);})();
+const mat=new THREE.PointsMaterial({size:.07,map:sprite,vertexColors:true,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:.9});
+const points=new THREE.Points(geo,mat);
+const group=new THREE.Group();group.add(points);scene.add(group);
+
+// dust
+const dg=new THREE.BufferGeometry(),dp=new Float32Array(900*3);for(let i=0;i<dp.length;i++)dp[i]=rnd(20);
+dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
+const dust=new THREE.Points(dg,new THREE.PointsMaterial({size:.04,map:sprite,color:0x8fa6d6,transparent:true,opacity:.5,depthWrite:false,blending:THREE.AdditiveBlending}));
+scene.add(dust);
+
+// section → shape + placement ---------------------------------------
+let target=shapes.sphere,current='sphere',offX=0,tgtOffX=0,tgtOpacity=.9,spinBoost=0;
+const scales={morph:.8,knot:.85};
+const placement={sphere:2.6,first:2.6,morph:-3.3,wave:0,knot:2.8,cube:0,galaxy:0,helix:0};
+const dim={sphere:.85,first:1,morph:.95,wave:.55,knot:.9,cube:.28,galaxy:.4,helix:.45};
+let morphTimer=null;
+function setTarget(name){
+  current=name;
+  clearInterval(morphTimer);
+  if(name==='morph'){const seq=['torus','cube','knot','sphere'];let k=0;target=shapes[seq[0]];spinBoost=1;
+    morphTimer=setInterval(()=>{k=(k+1)%seq.length;target=shapes[seq[k]];spinBoost=1;},2400);}
+  else target=shapes[name];
+  tgtOffX=isMobile()?0:placement[name];
+  tgtOpacity=isMobile()?Math.min(dim[name],.45):dim[name];
+}
+const sio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setTarget(e.target.dataset.shape);});},{rootMargin:'-45% 0px -45% 0px'});
+document.querySelectorAll('section[data-shape]').forEach(s=>sio.observe(s));
+
+function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
+  camera.position.z=innerWidth<600?10:7.5;setTarget(current);}
+addEventListener('resize',resize);resize();
+
+// burst on click
+addEventListener('pointerdown',e=>{if(e.target.closest('a,button,#sphere'))return;
+  for(let i=0;i<N;i++){pos[i*3]+=rnd(1.2);pos[i*3+1]+=rnd(1.2);pos[i*3+2]+=rnd(1.2);}});
+
+const clock=new THREE.Clock();
+function tick(){
+  const t=clock.getElapsedTime();
+  const a=geo.attributes.position.array;
+  for(let i=0;i<N;i++){const k=speed[i],j=i*3;
+    a[j]+=(target[j]-a[j])*k;a[j+1]+=(target[j+1]-a[j+1])*k;a[j+2]+=(target[j+2]-a[j+2])*k;}
+  if(current==='wave'){for(let i=0;i<N;i++){const j=i*3;a[j+1]=-2.2+Math.sin(a[j]*.8+t*1.4)*.35+Math.cos(a[j+2]*.9+t)*.35;}}
+  geo.attributes.position.needsUpdate=true;
+
+  offX+=(tgtOffX-offX)*.05;group.position.x=offX;
+  const sc=group.scale.x+(((isMobile()?1:scales[current])||1)-group.scale.x)*.05;group.scale.setScalar(sc);
+  mat.opacity+=(tgtOpacity-mat.opacity)*.05;
+  spinBoost*=.96;
+  const px=(mx/innerWidth-.5),py=(my/innerHeight-.5);
+  if(current==='first'){group.rotation.y+=(px*.5-group.rotation.y)*.05;group.rotation.x+=(py*.3-group.rotation.x)*.05;}
+  else if(current==='wave'){group.rotation.y+=(px*.2-group.rotation.y)*.05;group.rotation.x+=(.25+py*.1-group.rotation.x)*.05;}
+  else{group.rotation.y+=(reduce?0:.0025)+spinBoost*.03;group.rotation.x+=(py*.4-group.rotation.x)*.03;}
+  dust.rotation.y=t*.01;dust.rotation.x=t*.005;
+  camera.position.x+=(px*.6-camera.position.x)*.03;camera.position.y+=(-py*.4-camera.position.y)*.03;camera.lookAt(0,0,0);
+  renderer.render(scene,camera);
+  requestAnimationFrame(tick);
+}
+tick();
+})();
+</script>
+</body>
+</html>
